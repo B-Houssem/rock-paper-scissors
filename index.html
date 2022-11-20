@@ -8,6 +8,8 @@
 </head>
 <body>
     <script>
+        let resultP = 0;
+        let resultC = 0;
         function getComputerChoice(){
             let choiceArray = ["rock", "paper", "scissors"];
             let choice = choiceArray [~~(Math.random() * choiceArray.length)];
@@ -23,53 +25,46 @@
             const computerSelection = getComputerChoice();
             switch(true){
                 case (playerSelect == "rock" && computerSelection == "paper"):
-                    return "computer wins";
+                    resultC++;
+                    return "computer wins, paper beats rock";
                     break;
                 case (playerSelect == "paper" && computerSelection == "scissors"): 
-                    return "computer wins";
+                    resultC++;
+                    return "computer wins, scissors beat paper";
                     break;
                 case (playerSelect == "scissors" && computerSelection == "rock"): 
-                    return "computer wins";
+                    resultC++;
+                    return "computer wins, rock beats scissors";
                     break;
                 case (playerSelect == "paper" && computerSelection == "rock"):
-                    return "player wins";
+                    resultP++;
+                    return "player wins, paper beats rock";
                     break;
                 case (playerSelect == "scissors" && computerSelection == "paper"): 
-
-                    return "player wins";
+                    resultP++;
+                    return "player wins, scissors beat paper";
                     break;
                 case (playerSelect == "rock" && computerSelection == "scissors"): 
-                    return "player wins";
+                    resultP++;
+                    return "player wins, rock beats scissors";
                     break;
                 default:
                     return "tie";            
             }
         }
         function game(playRound){
-            let p = 0;
-            let c = 0;
             for (let i = 0; i < 5; i++){
-                let result = playRound();
-            
-            if (result == "player wins"){
+               playRound(getComputerChoice,playerSelection);
+            }
+            if (resultP > resultC){
                 console.log("the winner is the player");
-                p++;
-            } else if (result == "computer wins"){
+            } else if (resultP < resultC){
                 console.log("the winner is the computer");
-                c++;
             } else {
                 console.log("the match end up in a tie");
             }
         }
-            if (p > c){
-                console.log("the player wins");
-            } else if (p < c){
-                console.log("the computer wins");
-            } else{
-                console.log("the game is a tie");
-            }
-        }
-        game();
+        game(playRound);
     </script>
 </body>
 </html>
