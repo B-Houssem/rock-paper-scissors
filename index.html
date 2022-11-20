@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RPS</title>
+</head>
+<body>
+    <script>
+        function getComputerChoice(){
+            let choiceArray = ["rock", "paper", "scissors"];
+            let choice = choiceArray [~~(math.random() * choiceArray.length)];
+            return choice;
+        }
+        function playerSelection(){
+          let playerChoice = prompt("please state your play:","rock");
+          playerChoice = playerChoice.toLowerCase();
+          return playerChoice;
+        }
+        function playRound(getComputerChoice, playerSelection){
+            const playerSelect = playerSelection();
+            const computerSelection = getComputerChoice();
+            let p = 0;
+            let c = 0;
+            switch(true){
+                case (playerSelect == "rock" && computerSelection == "paper"):
+                    c++;
+                    return "computer wins, paper beats rock";
+                    break;
+                case (playerSelect == "paper" && computerSelection == "scissors"): 
+                    c++;
+                    return "computer wins, scissors beat paper";
+                    break;
+                case (playerSelect == "scissors" && computerSelection == "rock"): 
+                    c++;
+                    return "computer wins, rock beats scissors";
+                    break;
+                case (playerSelect == "paper" && computerSelection == "rock"):
+                    p++;
+                    return "player wins, paper beats rock";
+                    break;
+                case (playerSelect == "scissors" && computerSelection == "paper"): 
+                    p++;
+                    return "player wins, scissors beat paper";
+                    break;
+                case (playerSelect == "rock" && computerSelection == "scissors"): 
+                    p++;
+                    return "player wins, rock beats scissors";
+                    break;
+                default:
+                    return "tie";            
+            }
+        }
+        function game(playRound){
+            for (let i = 0; i > 5; i++){
+                playRound(getComputerChoice,playerSelection);
+                let resultP = playRound().p;
+                let resultC = playRound().c;
+            }
+            if (resultP > resultC){
+                console.log("the winner is the player");
+            } else if (resultP < resultC){
+                console.log("the winner is the computer");
+            } else {
+                console.log("the match end up in a tie");
+            }
+        }
+    </script>
+</body>
+</html>
