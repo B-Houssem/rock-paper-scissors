@@ -13,11 +13,13 @@
         function getComputerChoice(){
             let choiceArray = ["rock", "paper", "scissors"];
             let choice = choiceArray [~~(Math.random() * choiceArray.length)];
+            console.log("the computer choice is " + choice);
             return choice;
         }
         function playerSelection(){
           let playerChoice = prompt("please state your play:","rock");
           playerChoice = playerChoice.toLowerCase();
+          console.log("the player choice is " + playerChoice);
           return playerChoice;
         }
         function playRound(getComputerChoice, playerSelection){
@@ -26,30 +28,30 @@
             switch(true){
                 case (playerSelect == "rock" && computerSelection == "paper"):
                     resultC++;
-                    return "computer wins, paper beats rock";
+                    return console.log("computer wins, paper beats rock");
                     break;
                 case (playerSelect == "paper" && computerSelection == "scissors"): 
                     resultC++;
-                    return "computer wins, scissors beat paper";
+                    return console.log("computer wins, scissors beat paper");
                     break;
                 case (playerSelect == "scissors" && computerSelection == "rock"): 
                     resultC++;
-                    return "computer wins, rock beats scissors";
+                    return console.log("computer wins, rock beats scissors");
                     break;
                 case (playerSelect == "paper" && computerSelection == "rock"):
                     resultP++;
-                    return "player wins, paper beats rock";
+                    return console.log("player wins, paper beats rock");
                     break;
                 case (playerSelect == "scissors" && computerSelection == "paper"): 
                     resultP++;
-                    return "player wins, scissors beat paper";
+                    return console.log("player wins, scissors beat paper");
                     break;
                 case (playerSelect == "rock" && computerSelection == "scissors"): 
                     resultP++;
-                    return "player wins, rock beats scissors";
+                    return console.log("player wins, rock beats scissors");
                     break;
                 default:
-                    return "tie";            
+                    return console.log("tie");            
             }
         }
         function game(playRound){
