@@ -16,19 +16,23 @@
         const container = document.querySelector('#container')
         const content = document.createElement('div');
         const rock = document.querySelector('#btn1');
+        let i = 0;
         rock.addEventListener('click', () => {
             console.log('the player chose rock');
             playRound(getComputerChoice, 'rock');
+            game();
         })
         const paper = document.querySelector('#btn2');
         paper.addEventListener('click', () => {
             console.log('the player chose paper');
             playRound(getComputerChoice, 'paper');
+            game();
         })
         const scissors = document.querySelector('#btn3');
         scissors.addEventListener('click', () => {
             console.log('the player chose scissors');
             playRound(getComputerChoice, 'scissors');
+            game();
         })
 
         let resultP = 0;
@@ -80,7 +84,7 @@
                     break;
                 default:
                     content.textContent = "tie";
-                    return container.appendChild(content);            
+                    return container.appendChild(content);          
             }
         }
         /*function game(playRound){
@@ -96,6 +100,22 @@
             }
         }
         game(playRound);*/
+        function game(){
+            if (i == 4){
+                i = 0
+                const announcment = document.createElement('div');
+                if (resultP > resultC){
+                    announcment.textContent = 'the winner is the player';
+                } else if (resultP < resultC){
+                    announcment.textContent = 'the winner is the computer';
+                } else {
+                    announcment.textContent = "it's a tie";
+                }
+                container.appendChild(announcment);
+            } else{
+                i++;    
+            }
+        }
     </script>
 </body>
 </html>
