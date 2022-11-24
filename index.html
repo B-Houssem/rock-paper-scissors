@@ -7,7 +7,30 @@
     <title>RPS</title>
 </head>
 <body>
+    <div id="container">
+    <button id="btn1">rock</button>
+    <button id="btn2">paper</button>
+    <button id="btn3">scissors</button>
+</div>
     <script>
+        const container = document.querySelector('#container')
+        const content = document.createElement('div');
+        const rock = document.querySelector('#btn1');
+        rock.addEventListener('click', () => {
+            console.log('the player chose rock');
+            playRound(getComputerChoice, 'rock');
+        })
+        const paper = document.querySelector('#btn2');
+        paper.addEventListener('click', () => {
+            console.log('the player chose paper');
+            playRound(getComputerChoice, 'paper');
+        })
+        const scissors = document.querySelector('#btn3');
+        scissors.addEventListener('click', () => {
+            console.log('the player chose scissors');
+            playRound(getComputerChoice, 'scissors');
+        })
+
         let resultP = 0;
         let resultC = 0;
         function getComputerChoice(){
@@ -16,45 +39,51 @@
             console.log("the computer choice is " + choice);
             return choice;
         }
-        function playerSelection(){
+        /* function playerSelection(){
           let playerChoice = prompt("please state your play:","rock");
           playerChoice = playerChoice.toLowerCase();
           console.log("the player choice is " + playerChoice);
           return playerChoice;
-        }
+        }*/
         function playRound(getComputerChoice, playerSelection){
-            const playerSelect = playerSelection();
             const computerSelection = getComputerChoice();
             switch(true){
-                case (playerSelect == "rock" && computerSelection == "paper"):
+                case (playerSelection == "rock" && computerSelection == "paper"):
                     resultC++;
-                    return console.log("computer wins, paper beats rock");
+                    content.textContent = "computer wins, paper beats rock";
+                    return container.appendChild(content);
                     break;
-                case (playerSelect == "paper" && computerSelection == "scissors"): 
+                case (playerSelection == "paper" && computerSelection == "scissors"): 
                     resultC++;
-                    return console.log("computer wins, scissors beat paper");
+                    content.textContent = "computer wins, scissors beat paper";
+                    return container.appendChild(content);
                     break;
-                case (playerSelect == "scissors" && computerSelection == "rock"): 
+                case (playerSelection == "scissors" && computerSelection == "rock"): 
                     resultC++;
-                    return console.log("computer wins, rock beats scissors");
+                    content.textContent = "computer wins, rock beats scissors";
+                    return container.appendChild(content);
                     break;
-                case (playerSelect == "paper" && computerSelection == "rock"):
+                case (playerSelection == "paper" && computerSelection == "rock"):
                     resultP++;
-                    return console.log("player wins, paper beats rock");
+                    content.textContent = "player wins, paper beats rock";
+                    return container.appendChild(content);
                     break;
-                case (playerSelect == "scissors" && computerSelection == "paper"): 
+                case (playerSelection == "scissors" && computerSelection == "paper"): 
                     resultP++;
-                    return console.log("player wins, scissors beat paper");
+                    content.textContent = "player wins, scissors beat paper";
+                    return container.appendChild(content);
                     break;
-                case (playerSelect == "rock" && computerSelection == "scissors"): 
+                case (playerSelection == "rock" && computerSelection == "scissors"): 
                     resultP++;
-                    return console.log("player wins, rock beats scissors");
+                    content.textContent = "player wins, rock beats scissors";
+                    return container.appendChild(content);
                     break;
                 default:
-                    return console.log("tie");            
+                    content.textContent = "tie";
+                    return container.appendChild(content);            
             }
         }
-        function game(playRound){
+        /*function game(playRound){
             for (let i = 0; i < 5; i++){
                playRound(getComputerChoice,playerSelection);
             }
@@ -66,7 +95,7 @@
                 console.log("the match end up in a tie");
             }
         }
-        game(playRound);
+        game(playRound);*/
     </script>
 </body>
 </html>
